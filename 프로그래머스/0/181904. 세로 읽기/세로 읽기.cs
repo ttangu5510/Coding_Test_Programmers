@@ -1,12 +1,13 @@
 using System;
+using System.Text;
 
 public class Solution {
     public string solution(string my_string, int m, int c) {
-        string answer = "";
+        StringBuilder sb = new StringBuilder();
         for(int i = c-1 ; i < my_string.Length ; i+=m)
         {
-            answer+=my_string[i];
+            sb.Append(my_string[i]);
         }
-        return answer;
+        return sb.ToString();
     }
 }
