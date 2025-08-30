@@ -1,15 +1,10 @@
 using System;
+using System.Linq;
 
 public class Solution {
     public int solution(int[] num_list) {
-        int oddSum = 0;
-        int evenSum = 0;
-        for(int i = 0 ; i < num_list.Length ; i++)
-        {
-            if(i%2 == 0) evenSum += num_list[i];
-            else oddSum += num_list[i];
-        }
-        
+        int oddSum = num_list.Where((x, index) => index % 2 != 0).Sum();
+        int evenSum = num_list.Where((x, index) => index % 2 == 0).Sum();
         return (int)Math.Max(oddSum,evenSum);
     }
 }
