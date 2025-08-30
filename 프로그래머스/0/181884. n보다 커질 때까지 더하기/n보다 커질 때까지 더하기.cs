@@ -1,13 +1,8 @@
 using System;
+using System.Linq;
 
 public class Solution {
     public int solution(int[] numbers, int n) {
-        int answer = 0;
-        for(int i = 0 ; i < numbers.Length ; i++)
-        {
-            answer += numbers[i];
-            if(answer > n) return answer;
-        }
-        return answer;
+        return numbers.Aggregate(0, (sum, x) => sum > n ? sum : sum + x);
     }
 }
