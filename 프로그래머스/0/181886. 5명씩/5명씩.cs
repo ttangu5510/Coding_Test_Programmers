@@ -1,9 +1,12 @@
 using System;
-using System.Linq;
 
 public class Solution {
     public string[] solution(string[] names) {
-        
-        return names.Where((value, index) => index%5==0).ToArray();
+        string[] answer = new string[((names.Length - 1) / 5) + 1];
+        for(int i = 0; i < answer.Length ; i++)
+        {
+            answer[i] = names[i*5];
+        }
+        return answer;
     }
 }
