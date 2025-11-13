@@ -4,8 +4,8 @@ using System.Linq;
 
 public class Solution {
     public string[] solution(string myString) {
-        return myString.Split('x', StringSplitOptions.RemoveEmptyEntries)
-                       .OrderBy(o => o)
-                       .ToArray();
+        string[] answer = myString.Split('x',StringSplitOptions.RemoveEmptyEntries);
+        Array.Sort(answer);
+        return answer;
     }
 }
