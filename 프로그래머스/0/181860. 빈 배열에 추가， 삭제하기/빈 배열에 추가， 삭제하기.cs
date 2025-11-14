@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 
 public class Solution {
@@ -14,13 +13,8 @@ public class Solution {
             }
             else
             {
-                int lastIndex = answer.Count - 1;
-                for(int j  = 0 ; j < arr[i] ; j++)
-                    answer.RemoveAt(lastIndex--);   
+                answer.RemoveRange(answer.Count - arr[i], arr[i]);   
             }
-            foreach(int n in answer)
-                Console.Write(n);
-            Console.WriteLine();
         }
         return answer.ToArray();
     }
