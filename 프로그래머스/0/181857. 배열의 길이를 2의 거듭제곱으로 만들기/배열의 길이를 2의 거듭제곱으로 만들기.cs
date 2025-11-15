@@ -17,15 +17,7 @@ public class Solution {
                 return arr;
             }
         }
-        List<int> tmp = new List<int>();
-    
-        for(int i = 0 ; i < pw ; i++)
-        {
-            if(i < arr.Length)
-                tmp.Add(arr[i]);
-            else
-                tmp.Add(0);    
-        }
-        return tmp.ToArray();
+        Array.Resize(ref arr, pw);
+        return arr;
     }
 }
