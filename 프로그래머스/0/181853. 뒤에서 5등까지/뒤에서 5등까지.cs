@@ -1,10 +1,8 @@
 using System;
+using System.Linq;
 
 public class Solution {
     public int[] solution(int[] num_list) {
-        int[] answer = new int[5];
-        Array.Sort(num_list);
-        Array.Copy(num_list,0,answer,0,5);
-        return answer;
+        return num_list.OrderBy(o=>o).Take(5).ToArray();
     }
 }
