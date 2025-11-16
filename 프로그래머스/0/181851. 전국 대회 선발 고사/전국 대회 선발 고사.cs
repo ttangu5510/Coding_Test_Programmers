@@ -1,34 +1,18 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Solution {
     public int solution(int[] rank, bool[] attendance) {
-        List<int> answer = new List<int>();
-        int answerInt = 0;
-        int ranking = 1;
-        
-        while(answer.Count<3)
+        var rankList = new List<(int index, int rank)>();
+        for(int i = 0 ; i < rank.Length; i ++)
         {
-            for(int i = 0 ; i < rank.Length ; i ++)
+            if(attendance[i])
             {
-                if(rank[i] == ranking)
-                {
-                    if(attendance[i])
-                    {
-                       answer.Add(i);
-                        if(answer.Count ==3) break;
-                    }
-                    ranking++;
-                }
+                rankList.Add((i,rank[i]));
             }
         }
-        for(int i = 0 ; i < answer.Count ; i ++)
-        {
-            if( i == 0 ) answerInt += answer[i] * 10000;
-            if( i == 1 ) answerInt += answer[i] * 100;
-            if( i == 2 ) answerInt += answer[i];
-        }
-        return answerInt;
+        var answer = rankList.OrderBy(o=>o.Item2).Take(3).ToArray();
+        return answer[0].Item1 * 10000 + answer[1].Item1 * 100 + answer[2].Item1;
     }
 }
