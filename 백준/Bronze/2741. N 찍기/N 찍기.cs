@@ -13,7 +13,7 @@ public class Program
 		
 		for(int i = 1 ; i <= num ; i++)
 		{
-			sb.AppendLine($"{i}"); // i.ToString()과 비교하면 미세한 차이로 빠름
+			sb.AppendLine(i.ToString());
 		}
 		
 		Console.WriteLine(sb.ToString());
