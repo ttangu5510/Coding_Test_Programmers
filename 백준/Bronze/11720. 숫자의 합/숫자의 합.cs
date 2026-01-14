@@ -1,5 +1,4 @@
 using System;
-using System.Text;
 
 public class Program
 {
@@ -11,14 +10,13 @@ public class Program
 		var inputNum = Console.ReadLine();
 		if(string.IsNullOrEmpty(inputNum)) return;
 		
-		int count = int.Parse(input);
-		int answer = 0;
+        int answer = 0;
 		
 		foreach(var c in inputNum)
 		{
 			answer += (int)c - '0';
 		}
 		
-		Console.WriteLine(answer);
+		Console.Write(answer);
 	}
 }
