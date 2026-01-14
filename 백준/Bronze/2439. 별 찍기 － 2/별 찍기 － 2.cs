@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 public class Program
 {
@@ -7,18 +8,19 @@ public class Program
 		var input = Console.ReadLine();
 		if(string.IsNullOrEmpty(input)) return;
 		int count = int.Parse(input);
-		
+		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < count ; i++)
 		{
 			for(int j = 0 ; j < count - i - 1 ; j++)
 			{
-				Console.Write(" ");
+				sb.Append(' ');
 			}
 			for(int j = 0 ; j < i + 1 ; j++)
 			{
-				Console.Write("*");
+				sb.Append('*');
 			}
-			Console.WriteLine();
+			sb.AppendLine();
 		}
+        Console.WriteLine(sb.ToString());
 	}
 }
