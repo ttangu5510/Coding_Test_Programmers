@@ -16,12 +16,12 @@ public class Program
 		{
 			if(!ascending && !descending) break;
 			
-			if(ascending && nums[i] >= nums[i+1])
+			if(ascending && nums[i] + 1 != nums[i+1] )
 			{
 				ascending = false;
 				break;
 			}
-			else if(descending && nums[i] <= nums[i+1])
+			else if(descending && nums[i] - 1 != nums[i+1])
 			{
 				descending = false;
 				break;
