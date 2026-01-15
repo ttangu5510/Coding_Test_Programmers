@@ -4,23 +4,25 @@ public class Program
 {
 	public static void Main()
 	{
-		var inputA = Console.ReadLine();
-		if(string.IsNullOrEmpty(inputA)) return;
+		var input = Console.ReadLine();
+		if(string.IsNullOrEmpty(input)) return;
 			
-		int a = int.Parse(inputA);
+		int a = int.Parse(input);
 		
-		var inputB = Console.ReadLine();
-		if(string.IsNullOrEmpty(inputB)) return;
+		input = Console.ReadLine();
+		if(string.IsNullOrEmpty(input)) return;
 			
-		int b = int.Parse(inputB);
+		int b = int.Parse(input);
 		
-		var inputC = Console.ReadLine();
-		if(string.IsNullOrEmpty(inputC)) return;
+		input = Console.ReadLine();
+		if(string.IsNullOrEmpty(input)) return;
 			
-		int c = int.Parse(inputC);
+		int c = int.Parse(input);
+        
 		int[] result = new int[10];
 		
 		long mul = a * b * c;
+        
 		foreach(var ch in mul.ToString())
 		{
 			result[ch - '0']++;
