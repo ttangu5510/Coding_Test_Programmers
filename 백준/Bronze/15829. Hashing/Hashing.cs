@@ -4,6 +4,7 @@ public class Program
 {
 	static int mod = 1234567891;
 	static int pw = 31;
+    
 	public static void Main()
 	{
 		var input = Console.ReadLine();
@@ -15,12 +16,11 @@ public class Program
 		if(string.IsNullOrEmpty(input)) return;
 		
 		long result = 0;
-		for(int i = 0; i < input.Length ; i++)
+		for(int i = 0; i < n ; i++)
 		{
-			long val = (input[i] - 'a' + 1) * Pow(pw, i);
-			result += val;
+			long val = (input[i] - 'a' + 1);
+			result = (result + val * Pow(pw, i)) % mod;
 		}
-		result %= mod;
 		Console.WriteLine(result);
 	}
 	
@@ -32,13 +32,14 @@ public class Program
 		
 		long result = 1;
 		int pow = b;
-		int tmp = a;
+        long baseVal = a;
 		
 		while(pow > 0)
 		{
-			if((pow & 1) == 1) result *= tmp % mod;
+			if((pow & 1) == 1) 
+                result = (result * baseVal) % mod;
 			pow >>= 1;
-			tmp *= tmp;
+			baseVal = (baseVal * baseVal) % mod;
 		}
 		return result;
 	}
