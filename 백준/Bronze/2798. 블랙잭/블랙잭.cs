@@ -14,7 +14,7 @@ public class Program
  
 		int[] cards = Array.ConvertAll(input.Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);
  
-		int minDiff = int.MaxValue;
+		int minDiff = condition[1];
 		int result = 0;
  
 		for(int i = 0 ; i < condition[0] - 2; i++)
@@ -26,7 +26,12 @@ public class Program
 				{
 					int curSum = sum + cards[k];
 					int diff = condition[1] - curSum;
-					if(diff >= 0 && diff < minDiff)
+                    if(diff == 0)
+                    {
+                        Console.WriteLine(condition[1]);
+                        return;
+                    }
+					else if(diff > 0 && diff < minDiff)
 					{
 						minDiff = diff;
 						result = curSum;
