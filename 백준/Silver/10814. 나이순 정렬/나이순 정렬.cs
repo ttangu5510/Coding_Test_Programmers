@@ -1,9 +1,9 @@
 using System;
-using System.Linq;
-using System.IO;
+using System.Collections.Generic;
 
 public class Program
 {
+	public static int ageBoundary = 200;
 	public static void Main()
 	{
 		StreamReader sr = new StreamReader(new BufferedStream(Console.OpenStandardInput()));
@@ -13,7 +13,7 @@ public class Program
 		if(string.IsNullOrEmpty(input)) return;
 		
 		int count = int.Parse(input);
-		List<(int, int, string)> person = new List<(int, int, string)>();
+		List<string>[] listArr = new List<string>[ageBoundary + 1];
 		
 		for(int i = 0 ; i < count ; i++)
 		{
@@ -21,17 +21,24 @@ public class Program
 			if(string.IsNullOrEmpty(input)) return;
 			
 			string[] inputs = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-			person.Add((int.Parse(inputs[0]), i, inputs[1]));
+			int age = int.Parse(inputs[0]);
+			
+			// 나이를 인덱스로 사용
+			if(listArr[age] == null)
+			{
+				listArr[age] = new List<string>();
+			}
+			listArr[age].Add(inputs[1]); // 이름 추가
 		}
-		person.Sort((x,y) => {
-			int result = x.Item1.CompareTo(y.Item1);
-			if(result == 0) return x.Item2.CompareTo(y.Item2);
-			return result;
-		});
 		
-		foreach(var p in person)
+		for(int i = 0 ; i <= ageBoundary ; i++)
 		{
-			sw.WriteLine($"{p.Item1} {p.Item3}");
+			if(listArr[i] == null) continue;
+			
+			foreach(string s in listArr[i])
+			{
+				sw.WriteLine($"{i} {s}");
+			}
 		}
 		
 		sr.Close();
