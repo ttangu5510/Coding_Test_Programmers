@@ -1,9 +1,6 @@
-using System;
+using System.Linq;
 
 public class Solution {
-    public long solution(long n) {
-        char[] nums = n.ToString().ToCharArray();
-        Array.Sort(nums, (a,b) => b.CompareTo(a));
-        return long.Parse(new string(nums));
-    }
+    public long solution(long n) 
+        => long.Parse(n.ToString().OrderByDescending(c => (int)c).ToArray());
 }
