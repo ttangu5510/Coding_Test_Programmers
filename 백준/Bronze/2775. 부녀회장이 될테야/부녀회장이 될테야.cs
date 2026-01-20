@@ -3,7 +3,10 @@ using System.Collections.Generic;
 
 public class Program
 {
-	public static Dictionary<(int, int), long> facDict = new Dictionary<(int, int), long>();
+	// Dynamic Programming, Memoization 기법 적용. 2차원 배열로 구현해도 됨
+	// Main 시작과 동시에 미리 값을 전부 계산한 것을 저장하여 
+	// 함수에서 값을 불러오는 것은 Tabulation임
+	public static Dictionary<(int, int), long> resDict = new Dictionary<(int, int), long>();
 	
 	public static void Main()
 	{
@@ -23,7 +26,7 @@ public class Program
 			input = sr.ReadLine();
 			int n = int.Parse(input);
 			
-			sw.WriteLine(Sum(k, n));
+			sw.WriteLine(Resident(k, n));
 		}
 		
 		sr.Close();
@@ -31,17 +34,19 @@ public class Program
 	}
 	
 	// 재귀 함수로 구현
-	public static long Sum(int a, int b)
+	public static long Resident(int a, int b)
 	{
-		if(a == 0) return b;
+		// 0층의 b호는 b명의 사람이 거주
+		// a층의 1호는 1명 거주
+		if(a == 0 || b == 1) return b;
 		
-		if(!facDict.TryGetValue((a, b), out long result))
+		// 딕셔너리에서 저장된 값 탐색
+		// 없으면 새로 저장하여 추후 재활용(Memoization)
+		if(!resDict.TryGetValue((a, b), out long result))
 		{
-			for(int i = 1 ; i <= b ; i++)
-			{
-				result += Sum(a - 1, i);
-			}
-			facDict.Add((a, b), result);
+			result += Resident(a, b - 1) + Resident(a - 1, b);
+			
+			resDict.Add((a, b), result);
 		}
 		
 		return result;
