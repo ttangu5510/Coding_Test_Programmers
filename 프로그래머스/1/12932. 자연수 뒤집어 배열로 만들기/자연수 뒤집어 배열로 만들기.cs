@@ -1,11 +1,13 @@
 public class Solution {
     public int[] solution(long n) {
-        string str = n.ToString();
-        int[] answer = new int[str.Length];
+        int len = n.ToString().Length;
+        long num = n;
+        int[] answer = new int[len];
         
-        for(int i = str.Length - 1 ; i >= 0 ; i--)
+        for(int i = 0 ; i < len ; i++)
         {
-            answer[str.Length - i - 1] = str[i] - '0';
+            answer[i] = (int)(num % 10);
+            num /= 10;
         }
         
         return answer;
