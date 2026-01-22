@@ -10,7 +10,7 @@ public class Program
 		
 		int num = int.Parse(input);
 		
-		for(int i = 666 ; movieNum.Count <= 10000 ; i++)
+		for(int i = 666 ; movieNum.Count <= num ; i++)
 		{
 			string s = i.ToString();
 			if(s.Contains("666")) movieNum.Add(i);
