@@ -8,13 +8,7 @@ public class Program
 		if(string.IsNullOrEmpty(input)) return;
 		
 		int num = int.Parse(input);
-		int count = 0;
-		
-		while(num >= 5)
-        {
-            count += num / 5;
-            num /= 5;
-        }
-		Console.WriteLine(count);
+
+		Console.WriteLine(num / 125 + num / 25 + num / 5);
 	}
 }
