@@ -12,12 +12,8 @@ public class Solution {
         }
         
         List<int> answer = new List<int>();
-        
-        for(int i = 0; i < arr.Length; i++)
-        {
-            if(i != minIndex) answer.Add(arr[i]);
-        }
-        
+        answer.AddRange(arr);
+        answer.RemoveAt(minIndex);
         return answer.ToArray();
     }
 }
