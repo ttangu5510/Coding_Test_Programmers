@@ -1,18 +1,26 @@
 using System;
+using System.IO;
+using System.Text;
 using System.Collections.Generic;
 
 public class Program
 {
 	public static void Main()
 	{
+		StreamReader sr = new StreamReader(new BufferedStream(Console.OpenStandardInput()));
+		StreamWriter sw = new StreamWriter(new BufferedStream(Console.OpenStandardOutput()));
+		
+        StringBuilder sb = new StringBuilder();
+		Stack<char> br = new Stack<char>();
+		bool hasBr;
+		
 		while(true)
 		{
-			var input = Console.ReadLine();
-			if(string.IsNullOrEmpty(input) || input == ".") return;
+			var input = sr.ReadLine();
+			if(string.IsNullOrEmpty(input) || input == ".") break;
 			
-			Stack<char> br = new Stack<char>();
-			
-			bool hasBr = true;
+			br.Clear();
+			hasBr = true;
 			
 			for(int i = 0; i < input.Length; i++)
 			{
@@ -38,10 +46,17 @@ public class Program
 						}
 						break;
 				}
+				
 				if(!hasBr) break;
 			}
-			if(hasBr && br.Count == 0) Console.WriteLine("yes");
-            else Console.WriteLine("no");
+			
+			if(hasBr && br.Count == 0) sb.AppendLine("yes");
+			else sb.AppendLine("no");
 		}
+		
+        sw.Write(sb);
+        
+        sr.Close();
+        sw.Close();
 	}
 }
