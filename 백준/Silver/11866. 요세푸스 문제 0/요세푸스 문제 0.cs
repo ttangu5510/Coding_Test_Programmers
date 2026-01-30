@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 public class Program
 {
@@ -13,13 +14,14 @@ public class Program
 		int[] nums = Array.ConvertAll(input.Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);
 		
 		int[] answer = Josephus(nums[0], nums[1]);
-		sw.Write("<");
+		StringBuilder sb = new StringBuilder();
+		sb.Append("<");
 		for(int i = 0; i < answer.Length - 1; i++)
 		{
-			sw.Write($"{answer[i] + 1}, ");
+			sb.Append($"{answer[i] + 1}, ");
 		}
-		sw.Write($"{answer[^1] + 1}>");
-		
+		sb.Append($"{answer[^1] + 1}>");
+		sw.Write(sb);
 		sw.Flush();
 		sw.Close();
 		sr.Close();
